@@ -1,0 +1,27 @@
+{
+  "name": "stock",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "watchify -vd -p browserify-hmr -t vueify -e src/main.js -o build/build.js & http-server -c 1 -a localhost"
+  },
+  "author": "lutepluto <lutepluto@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^1.0.3",
+    "vue-router": "^0.7.5"
+  },
+  "devDependencies": {
+    "babel-runtime": "^5.8.29",
+    "browserify-hmr": "^0.3.1",
+    "gulp": "^3.9.0",
+    "gulp-connect": "^2.2.0",
+    "gulp-load-plugins": "^1.0.0",
+    "http-server": "^0.8.5",
+    "vue-hot-reload-api": "^1.2.1",
+    "vueify": "^5.0.0",
+    "vueify-insert-css": "^1.0.0",
+    "watchify": "^3.5.0"
+  }
+}
