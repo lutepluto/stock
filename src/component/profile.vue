@@ -45,11 +45,11 @@
 <template>
   <section class="profile">
     <div class="avatar">
-      <img v-bind:src="headImgUrl">
+      <img :src="headImgUrl">
     </div>
     <div class="detail">
       <h3 class="username">{{ username }}<small>主理</small></h3>
-      <p class="fileds">{{ fields.join('，') }}</p>
+      <p class="fileds">{{ formatFields }}</p>
     </div>
   </section>
 </template>
@@ -60,11 +60,24 @@
   module.exports = {
     data: function() {
       return {
-        'username': '涨停板达人',
-        'headImgUrl': 'http://tp2.sinaimg.cn/1316141001/180/1281682695/1',
-        'fields': ['行业反转', '医药', '医疗器械', '传媒娱乐']
+        username: '',
+        headImgUrl: '',
+        fields: []
       }
+    },
+    computed: {
+      formatFields: function() {
+        return this.fields.join('，')
+      }      
+    },
+    ready: function() {
+      this.$http.get('profile', function(data, status, request) {
+        this.$set('username', data.username)
+        this.$set('headImgUrl', data.headImgUrl)
+        this.$set('fields', data.fields)
+      }).error(function(data, status, request) {
+        console.error(data)
+      })
     }
   }
-
 </script>

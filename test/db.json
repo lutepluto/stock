@@ -1,0 +1,20 @@
+{
+  "property": {
+    "totalUnits": 1000000,
+    "originalPrice": 10000,
+    "currentPrice": 16397,
+    "increaseInDay": 20,
+    "increaseInMonth": 120,
+    "rank": 97.03
+  },
+  "profile": {
+    "username": "涨停板达人",
+    "headImgUrl": "http://tp2.sinaimg.cn/1316141001/180/1281682695/1",
+    "fields": [
+      "行业反转",
+      "医药",
+      "医疗器械",
+      "传媒娱乐"
+    ]
+  }
+}

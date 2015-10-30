@@ -97,25 +97,25 @@
 <template>
   <section class="property">
     <div class="revenue">
-      <label>{{ ((currentPrice - originalPrice) / originalPrice * 100).toFixed(2) }}%</label>
-      <label>{{ (currentPrice / 10000).toFixed(4) }}</label>
+      <label>{{ totalAvenue }}%</label>
+      <label>{{ netPrice }}</label>
     </div>
     <div class="statistics">
       <label>
         <span>日</span>
-        <span>{{ (increaseInDay / (currentPrice - increaseInDay) * 100).toFixed(2) }}%</span>
+        <span>{{ dayIncreaseRate }}%</span>
       </label>
       <label>
         <span>月</span>
-        <span>{{ (increaseInMonth / (currentPrice - increaseInMonth) * 100).toFixed(2) }}%</span>
+        <span>{{ monthIncreaseRate }}%</span>
       </label>
       <label>
         <span>净值</span>
-        <span>{{ (currentPrice / 10000).toFixed(4) }}</span>
+        <span>{{ netPrice }}</span>
       </label>
       <label>
         <span>总收益排行（沪深）</span>
-        <span>跑赢{{ rank }}组合</span>
+        <span>跑赢{{ property.rank }}组合</span>
       </label>
     </div>
   </section>
@@ -127,13 +127,29 @@
   module.exports = {
     data: function() {
       return {
-        'totalUnits': 1000000,
-        'originalPrice': 10000,
-        'currentPrice': 16397,
-        'increaseInDay': 20,
-        'increaseInMonth': 120,
-        'rank': 97.03
+        property: ''
       }
+    },
+    computed: {
+      totalAvenue: function() {
+        return ((this.property.currentPrice - this.property.originalPrice) / this.property.originalPrice * 100).toFixed(2)
+      },
+      netPrice: function() {
+        return (this.property.currentPrice / 10000).toFixed(4)
+      },
+      dayIncreaseRate: function() {
+        return (this.property.increaseInDay / (this.property.currentPrice - this.property.increaseInDay) * 100).toFixed(2)
+      },
+      monthIncreaseRate: function() {
+        return (this.property.increaseInMonth / (this.property.currentPrice - this.property.increaseInMonth) * 100).toFixed(2)
+      }
+    },
+    ready: function() {
+      this.$http.get('property', function(data, status, request) {
+        this.$set('property', data)
+      }).error(function(data, status , request) {
+        console.error(data)
+      })
     }
   }
 
