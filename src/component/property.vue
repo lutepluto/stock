@@ -4,36 +4,41 @@
   background-color: #ffa726;
 }
 
-.revenue,
-.statistics {
-  position: relative;
-  display: flex-box;
-  display: -moz-flex;
-  display: -ms-flex;
+.flexbox {
+  display: -webkit-box;
+  -webkit-box-pack: justify;  /* hack for android 4.1 4.3 */
   display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
   display: flex;
 }
 
-.revenue {
-  color: #353535;
-  font-size: 24px;
-  font-weight: 700;
-}
-
-.revenue label {
+.flexbox-item {
   -webkit-box-flex: 1;
   -webit-flex: 1;
-  -moz-box-flex: 1;
   -moz-flex: 1 1 0;
   -ms-flex: 1 1 0;
   flex: 1 1 0;
+}
 
+.revenue,
+.statistics {
   position: relative;
-  padding: 20px 0;
+}
+
+.revenue {
+  color: #fff;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.revenue .flexbox-item {
+  padding: 10px 0;
+  position: relative;
   text-align: center;
 }
 
-.revenue label:not(:last-child):after {
+.revenue .flexbox-item:not(:last-child):after {
   position: absolute;
   content: ' ';
   top: 20%;
@@ -41,7 +46,7 @@
   bottom: 20%;
   width: 2px;
   border-radius: 2px;
-  background-color: #353535;
+  background-color: #fff;
 }
 
 .statistics {
@@ -60,21 +65,17 @@
   background: rgba(239, 239, 239, .3);
 }
 
-.statistics label {
-  -webkit-box-flex: 1;
-  -webit-flex: 1;
-  -moz-box-flex: 1;
-  -moz-flex: 1 1 auto;
-  -ms-flex: 1 1 auto;
-  flex: 1 1 auto;
-
+.statistics .flexbox-item {
   position: relative;
   text-align: center;
   white-space: nowrap;
   line-height: 1.4;
+  -moz-flex-basis: auto;
+  -ms-flex-basis: auto;
+  flex-basis: auto;
 }
 
-.statistics label:last-child:before {
+.statistics .flexbox-item:last-child:before {
   position: absolute;
   content: ' ';
   top: 0;
@@ -84,38 +85,51 @@
   background: rgba(239, 239, 239, .3);
 }
 
-.statistics label span {
+.statistics .flexbox-item span,
+.revenue .flexbox-item span {
   display: block;
 }
 
-.statistics label span:first-child {
+.statistics .flexbox-item span:first-child,
+.revenue .flexbox-item span:first-child {
   margin-bottom: 10px;
   color: rgba(239, 239, 239, .9);
+}
+
+.revenue .flexbox-item span:first-child {
+  color: #fff;
+  font-size: 16px;
 }
 </style>
 
 <template>
   <section class="property">
-    <div class="revenue">
-      <label>{{ totalAvenue }}%</label>
-      <label>{{ netPrice }}</label>
+    <div class="flexbox revenue">
+      <div class="flexbox-item">
+        <span>月收益</span>
+        <span>{{ totalAvenue }}%</span>
+      </div>
+      <div class="flexbox-item">
+        <span>基金净值</span>
+        <span>{{ netPrice }}</span>
+      </div>
     </div>
-    <div class="statistics">
-      <label>
-        <span>日</span>
+    <div class="flexbox statistics">
+      <label class="flexbox-item">
+        <span>周</span>
         <span>{{ dayIncreaseRate }}%</span>
       </label>
-      <label>
+      <label class="flexbox-item">
         <span>月</span>
         <span>{{ monthIncreaseRate }}%</span>
       </label>
-      <label>
-        <span>净值</span>
+      <label class="flexbox-item">
+        <span>当前净值</span>
         <span>{{ netPrice }}</span>
       </label>
-      <label>
-        <span>总收益排行（沪深）</span>
-        <span>跑赢{{ property.rank }}组合</span>
+      <label class="flexbox-item">
+        <span>总收益相对（沪深）</span>
+        <span>跑赢{{ property.rank }}％</span>
       </label>
     </div>
   </section>
