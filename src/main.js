@@ -1,19 +1,34 @@
-'use strict'
-
 var Vue = require('vue')
-var App = require('./app.vue')
+var Resource = require('vue-resource')
+var Router = require('vue-router')
+var App = require('./component/App.vue')
 
 Vue.config.debug = true
 
-Vue.use(require('vue-resource'))
+// install vue resource
+Vue.use(Resource)
 Vue.http.options.root = '/api'
 
-new Vue({
-  el: 'body',
-  data: {
-    title: 'Stock...'
+// install vue router
+Vue.use(Router)
+
+// routing
+var router = new Router()
+
+router.map({
+  '/': {
+    component: require('./component/ProfileView.vue')
   },
-  components: {
-    app: App
+  '/pool': {
+    component: require('./component/StocksView.vue')
+  },
+  '/history': {
+    component: require('./component/HistoryView.vue')
   }
 })
+
+router.redirect({
+  '*': '/'
+})
+
+router.start(App, '#app')

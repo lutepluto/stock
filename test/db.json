@@ -1,7 +1,7 @@
 {
   "property": {
     "date": "2015-10-31",
-    "totalRevenue": 23.2,
+    "totalAvenue": 23.2,
     "netPrice": 1.23,
     "weekIncreaseRate": 23.3,
     "monthIncreaseRate": 49.34,
@@ -12,10 +12,72 @@
     "username": "涨停板达人",
     "headImgUrl": "http://tp2.sinaimg.cn/1316141001/180/1281682695/1",
     "fields": [
-      "行业反转",
-      "医药",
-      "医疗器械",
+      "生物医药",
+      "TMT",
+      "环境保护",
       "传媒娱乐"
     ]
-  }
+  },
+  "ratio": {
+    "currency": 0.25,
+    "stock": 0.75
+  },
+  "pool": [
+    {
+      "category": "医药生物",
+      "stocks": [
+        {
+          "name": "恒瑞医药",
+          "code": "SH600276"
+        },
+        {
+          "name": "复星医药",
+          "code": "SH600196"
+        },
+        {
+          "name": "通策医疗",
+          "code": "SH600763"
+        },
+        {
+          "name": "华润三九",
+          "code": "SZ000999"
+        }
+      ]
+    },
+    {
+      "category": "食品医疗",
+      "stocks": [
+        {
+          "name": "承德露露",
+          "code": "SZ000848"
+        },
+        {
+          "name": "古井贡酒",
+          "code": "SZ600596"
+        }
+      ]
+    }
+  ],
+  "revenues": [
+    {
+      "day": "2015-11-09",
+      "amount": 1.6904
+    },
+    {
+      "day": "2015-11-06",
+      "amount": 1.6858
+    },
+    {
+      "day": "2015-11-05",
+      "amount": 1.6829
+    },
+    {
+      "day": "2015-11-04",
+      "amount": 1.6834
+    },
+    {
+      "day": "2015-11-03",
+      "amount": 1.6278
+    }
+  ]
 }
