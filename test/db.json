@@ -1,11 +1,12 @@
 {
   "property": {
-    "totalUnits": 1000000,
-    "originalPrice": 10000,
-    "currentPrice": 16397,
-    "increaseInDay": 20,
-    "increaseInMonth": 120,
-    "rank": 97.03
+    "date": "2015-10-31",
+    "totalRevenue": 23.2,
+    "netPrice": 1.23,
+    "weekIncreaseRate": 23.3,
+    "monthIncreaseRate": 49.34,
+    "beyond_profit_300": 13.23,
+    "beyond_profit_cy": 5.53
   },
   "profile": {
     "username": "涨停板达人",
